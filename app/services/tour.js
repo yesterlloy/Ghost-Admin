@@ -2,6 +2,7 @@ import Evented from '@ember/object/evented';
 import RSVP from 'rsvp';
 import Service, {inject as service} from '@ember/service';
 import {computed} from '@ember/object';
+import { loc } from '@ember/string';
 
 export default Service.extend(Evented, {
 
@@ -44,7 +45,30 @@ export default Service.extend(Evented, {
         let adminDisplayUrl = adminUrl.replace(`${window.location.protocol}//`, '');
 
         this.viewed = [];
+        this.throbbers = [{
+            id: 'getting-started',
+            title: loc('getting-started_title'),
+            message: loc('getting-started_message')
+        }, {
+            id: 'using-the-editor',
+            title: loc('using-the-editor_title'),
+            message: loc('using-the-editor_message')
+        }, {
+            id: 'static-post',
+            title: loc('static-post_title'),
+            message: loc('static-post_message')
+        }, {
+            id: 'featured-post',
+            title: loc('featured-post_title'),
+            message: loc('featured-post_message')
+        }, {
+            id: 'upload-a-theme',
+            title: loc('upload-a-theme_title'),
+            message: loc('upload-a-theme_message')
+        }];
 
+
+        /*
         this.throbbers = [{
             id: 'getting-started',
             title: 'Getting started with Ghost',
@@ -64,8 +88,9 @@ export default Service.extend(Evented, {
         }, {
             id: 'upload-a-theme',
             title: 'Customising your publication',
-            message: 'Using custom themes, you can completely control the look and feel of your site to suit your branch. Here\'s a full guide to help: <strong><a href="https://docs.ghost.org/api/handlebars-themes/" target="_blank">https://docs.ghost.org/api/handlebars-themes/</a></strong>'
+            message: 'Using custom themes, you can completely control the look and feel of your site to suit your branch. Here\'s a full guide to help: <strong><a href="https://themes.ghost.org" target="_blank">https://themes.ghost.org</a></strong>'
         }];
+        */
     },
 
     _activeThrobbers: computed('viewed.[]', 'throbbers.[]', function () {

@@ -3,6 +3,7 @@ import Component from '@ember/component';
 import {computed} from '@ember/object';
 import {reads} from '@ember/object/computed';
 import {inject as service} from '@ember/service';
+import {loc} from '@ember/string';
 import {task} from 'ember-concurrency';
 
 export default Component.extend({
@@ -36,11 +37,11 @@ export default Component.extend({
         let state = this.get('postState');
 
         if (state === 'published') {
-            return 'Update';
+            return loc('Update');
         } else if (state === 'scheduled') {
-            return 'Scheduled';
+            return loc('Scheduled');
         } else {
-            return 'Publish';
+            return loc('Publish');
         }
     }),
 
@@ -50,15 +51,15 @@ export default Component.extend({
         let runningText;
 
         if (postState === 'draft') {
-            runningText = saveType === 'publish' ? 'Publishing' : 'Scheduling';
+            runningText = saveType === 'publish' ? loc('Publishing') : loc('Scheduling');
         }
 
         if (postState === 'published') {
-            runningText = saveType === 'publish' ? 'Updating' : 'Unpublishing';
+            runningText = saveType === 'publish' ? loc('Updating') : loc('Unpublishing');
         }
 
         if (postState === 'scheduled') {
-            runningText = saveType === 'schedule' ? 'Rescheduling' : 'Unscheduling';
+            runningText = saveType === 'schedule' ? loc('Rescheduling') : loc('Unscheduling');
         }
 
         return runningText || 'Publishing';
@@ -70,18 +71,18 @@ export default Component.extend({
         let buttonText;
 
         if (postState === 'draft') {
-            buttonText = saveType === 'publish' ? 'Publish' : 'Schedule';
+            buttonText = saveType === 'publish' ? loc('Publish') : loc('Schedule');
         }
 
         if (postState === 'published') {
-            buttonText = saveType === 'publish' ? 'Update' : 'Unpublish';
+            buttonText = saveType === 'publish' ? loc('Update') : loc('Unpublish');
         }
 
         if (postState === 'scheduled') {
-            buttonText = saveType === 'schedule' ? 'Reschedule' : 'Unschedule';
+            buttonText = saveType === 'schedule' ? loc('Reschedule') : loc('Unschedule');
         }
 
-        return buttonText || 'Publish';
+        return buttonText || loc('Publish');
     }),
 
     successText: computed('_previousStatus', 'postState', function () {
@@ -90,15 +91,15 @@ export default Component.extend({
         let buttonText;
 
         if (previousStatus === 'draft') {
-            buttonText = postState === 'published' ? 'Published' : 'Scheduled';
+            buttonText = postState === 'published' ? loc('Published') : loc('Scheduled');
         }
 
         if (previousStatus === 'published') {
-            buttonText = postState === 'draft' ? 'Unpublished' : 'Updated';
+            buttonText = postState === 'draft' ? loc('Unpublished') : loc('Updated');
         }
 
         if (previousStatus === 'scheduled') {
-            buttonText = postState === 'draft' ? 'Unscheduled' : 'Rescheduled';
+            buttonText = postState === 'draft' ? loc('Unscheduled') : loc('Rescheduled');
         }
 
         return buttonText;

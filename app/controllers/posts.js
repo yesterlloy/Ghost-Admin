@@ -3,35 +3,36 @@ import {alias} from '@ember/object/computed';
 import {computed} from '@ember/object';
 import {get} from '@ember/object';
 import {inject as service} from '@ember/service';
+import { loc } from '@ember/string';
 
 const TYPES = [{
-    name: 'All posts',
+    name: loc('All posts'),
     value: null
 }, {
-    name: 'Draft posts',
+    name: loc('Draft posts'),
     value: 'draft'
 }, {
-    name: 'Published posts',
+    name: loc('Published posts'),
     value: 'published'
 }, {
-    name: 'Scheduled posts',
+    name: loc('Scheduled posts'),
     value: 'scheduled'
 }, {
-    name: 'Featured posts',
+    name: loc('Featured posts'),
     value: 'featured'
 }, {
-    name: 'Pages',
+    name: loc('Pages'),
     value: 'page'
 }];
 
 const ORDERS = [{
-    name: 'Newest',
+    name: loc('Newest'),
     value: null
 }, {
-    name: 'Oldest',
+    name: loc('Oldest'),
     value: 'published_at asc'
 }, {
-    name: 'Recently updated',
+    name: loc('Recently updated'),
     value: 'updated_at desc'
 }];
 
@@ -87,7 +88,7 @@ export default Controller.extend({
             .sort((tagA, tagB) => tagA.name.localeCompare(tagB.name, undefined, {ignorePunctuation: true}));
         let options = tags.toArray();
 
-        options.unshiftObject({name: 'All tags', slug: null});
+        options.unshiftObject({name: loc('All tags'), slug: null});
 
         return options;
     }),
@@ -107,7 +108,7 @@ export default Controller.extend({
         let authors = this.get('_availableAuthors');
         let options = authors.toArray();
 
-        options.unshiftObject({name: 'All authors', slug: null});
+        options.unshiftObject({name: loc('All authors'), slug: null});
 
         return options;
     }),

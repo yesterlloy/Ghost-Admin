@@ -10,7 +10,7 @@
                     <div class="{{ui-text "ts"}} h9 br b--lightgrey pl3 pr4 flex items-center br2 br--left {{unless infoMessage "bg-white"}}">
                         {{#link-to "posts" classNames="blue link fw4 flex items-center" data-test-link="stories"}}
                             {{svg-jar "arrow-left" class="w3 fill-blue mr1 nudge-right--2"}}
-                            Stories
+                            {{loc "Stories"}}
                         {{/link-to}}
                     </div>
                 {{/if}}
@@ -23,7 +23,7 @@
                     </span>
                 {{#gh-scheduled-post-countdown post=post as |post countdown|}}
                     <time datetime="{{post.publishedAtUTC}}" class="green f8 ml5" data-test-schedule-countdown>
-                        Post will go live {{countdown}}.
+                        {{loc "Post will go live"}} {{countdown}}.
                     </time>
                 {{/gh-scheduled-post-countdown}}
                 </div>
@@ -35,7 +35,7 @@
                     {{svg-jar "idea" class="w7 h7 fill-blue"}}
                     <p class="ma0 pa0 ml1 nudge-top--2">
                         {{infoMessage}}
-                        <button type="button" class="blue fw5" {{action (mut infoMessage "")}}>Got it</button>
+                        <button type="button" class="blue fw5" {{action (mut infoMessage "")}}>{{loc "Got it"}}</button>
                     </p>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     {{#if session.user.isContributor}}
                         {{gh-task-button "Save"
                             task=save
-                            runningText="Saving"
+                            runningText=(loc "Saving")
                             class="gh-btn gh-btn-blue gh-btn-icon contributor-save-button"
                             data-test-contributor-save=true}}
                     {{else}}
@@ -71,11 +71,11 @@
         --}}
         {{gh-koenig-editor
             title=(readonly post.titleScratch)
-            titlePlaceholder="Story Title"
+            titlePlaceholder=(loc "Story Title")
             onTitleChange=(action "updateTitleScratch")
             onTitleBlur=(action (perform saveTitle))
             body=(readonly post.scratch)
-            bodyPlaceholder="Begin writing your story..."
+            bodyPlaceholder=(loc "Begin writing your story...")
             bodyAutofocus=shouldFocusEditor
             onBodyChange=(action "updateScratch")
             headerOffset=editor.headerHeight
@@ -90,7 +90,9 @@
             <div class="midgrey-l2 {{if editor.headerClass "f-supersmall pl2 pr2" "f8 pl4 pr3"}} fw3">
                 {{pluralize wordCount.wordCount "word"}}
             </div>
-            <a href="https://docs.ghost.org/faq/using-the-editor/" class="flex {{if editor.headerClass "pa2" "pa3"}}" target="_blank">{{svg-jar "help" class="w4 h4 stroke-midgrey-l2"}}</a>
+            <a href="https://help.ghost.org/article/29-ghost-editor-overview" class="flex {{if editor.headerClass "pa2" "pa3"}}" target="_blank">
+                {{svg-jar "help" class="w4 h4 stroke-midgrey-l2"}}
+            </a>
         </div>
 
     {{/gh-editor}}

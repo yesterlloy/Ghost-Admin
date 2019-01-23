@@ -1,5 +1,5 @@
 <header class="modal-header">
-    <h1>Are you sure you want to leave this page?</h1>
+    <h1>{{loc "Are you sure you want to leave this page"}}?</h1>
 </header>
 <a class="close" href="" title="Close" {{action "closeModal"}}>{{svg-jar "close"}}<span class="hidden">Close</span></a>
 
@@ -9,10 +9,10 @@
         you haven't saved all of your content.
     </p>
 
-    <p>Save before you go!</p>
+    <p>{{loc "Save before you go"}}!</p>
 </div>
 
 <div class="modal-footer">
-    <button {{action "closeModal"}} class="gh-btn"><span>Stay</span></button>
-    <button {{action "confirm"}} class="gh-btn gh-btn-red"><span>Leave</span></button>
+    <button {{action "closeModal"}} class="gh-btn"><span>{{loc "Stay"}}</span></button>
+    <button {{action "confirm"}} class="gh-btn gh-btn-red"><span>{{loc "Leave"}}</span></button>
 </div>

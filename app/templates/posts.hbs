@@ -1,8 +1,10 @@
 <section class="gh-canvas">
     <header class="gh-canvas-header">
-        <h2 class="gh-canvas-title" data-test-screen-title>Your stories</h2>
+        <h2 class="gh-canvas-title" data-test-screen-title>{{loc "Your stories"}}</h2>
         <section class="view-actions">
-            {{#link-to "editor.new" class="gh-btn gh-btn-green" data-test-new-post-button=true}}<span>New story</span>{{/link-to}}
+            {{#link-to "editor.new" class="gh-btn gh-btn-green" data-test-new-post-button=true}}
+                <span>{{loc "New story"}}</span>
+            {{/link-to}}
         </section>
     </header>
     <div class="gh-contentfilter">
@@ -35,7 +37,7 @@
                 classNames="gh-contentfilter-menu gh-contentfilter-author"
                 triggerClass="gh-contentfilter-menu-trigger"
                 dropdownClass="gh-contentfilter-menu-dropdown"
-                searchPlaceholder="Search authors"
+                searchPlaceholder=(loc "Search authors")
                 matchTriggerWidth=false
                 data-test-author-select=true
                 as |author|
@@ -54,7 +56,7 @@
                 classNames="gh-contentfilter-menu gh-contentfilter-tag"
                 triggerClass="gh-contentfilter-menu-trigger"
                 dropdownClass="gh-contentfilter-menu-dropdown"
-                searchPlaceholder="Search tags"
+                searchPlaceholder=(loc "Search tags")
                 matchTriggerWidth=false
                 optionsComponent="power-select-vertical-collection-options"
                 data-test-tag-select=true
@@ -66,7 +68,7 @@
         </div>
 
         <div class="gh-contentfilter-right">
-            Sort by:
+            {{loc 'Sort by'}}:
             {{#power-select
                 selected=selectedOrder
                 options=availableOrders

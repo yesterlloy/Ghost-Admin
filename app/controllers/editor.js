@@ -14,6 +14,7 @@ import {isInvalidError} from 'ember-ajax/errors';
 import {isVersionMismatchError} from 'ghost-admin/services/ajax';
 import {inject as service} from '@ember/service';
 import {task, taskGroup, timeout} from 'ember-concurrency';
+import {loc} from '@ember/string';
 
 const DEFAULT_TITLE = '(Untitled)';
 
@@ -43,19 +44,19 @@ const messageMap = {
     errors: {
         post: {
             published: {
-                published: 'Update failed',
-                draft: 'Saving failed',
-                scheduled: 'Scheduling failed'
+                published: loc('Update failed'),
+                draft: loc('Saving failed'),
+                scheduled: loc('Scheduling failed')
             },
             draft: {
-                published: 'Publish failed',
-                draft: 'Saving failed',
-                scheduled: 'Scheduling failed'
+                published: loc('Publish failed'),
+                draft: loc('Saving failed'),
+                scheduled: loc('Scheduling failed')
             },
             scheduled: {
-                scheduled: 'Updated failed',
-                draft: 'Unscheduling failed',
-                published: 'Publish failed'
+                scheduled: loc('Updated failed'),
+                draft: loc('Unscheduling failed'),
+                published: loc('Publish failed')
             }
 
         }
@@ -64,19 +65,19 @@ const messageMap = {
     success: {
         post: {
             published: {
-                published: 'Updated.',
-                draft: 'Saved.',
-                scheduled: 'Scheduled.'
+                published: loc('Updated') + '.',
+                draft: loc('Saved') + '.',
+                scheduled: loc(Scheduled) + '.'
             },
             draft: {
-                published: 'Published!',
-                draft: 'Saved.',
-                scheduled: 'Scheduled.'
+                published: loc('Published') + '!',
+                draft: loc('Saved') + '.',
+                scheduled: loc('Scheduled') + '.'
             },
             scheduled: {
-                scheduled: 'Updated.',
-                draft: 'Unscheduled.',
-                published: 'Published!'
+                scheduled: loc('Updated') + '.',
+                draft: loc('Unscheduled') + '.',
+                published: loc('Published') + '!'
             }
         }
     }
@@ -474,8 +475,6 @@ export default Controller.extend({
         if (this.get('post.isDraft')) {
             yield this.get('autosave').perform();
         }
-
-        this.send('updateDocumentTitle');
     }),
 
     generateSlug: task(function* () {

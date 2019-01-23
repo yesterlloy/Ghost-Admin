@@ -2,10 +2,14 @@ import 'ghost-admin/utils/link-component';
 import 'ghost-admin/utils/route';
 import 'ghost-admin/utils/text-field';
 import Application from '@ember/application';
+import Ember from 'ember';
 import Resolver from './resolver';
 import config from './config/environment';
 import loadInitializers from 'ember-load-initializers';
+import internation from './translate/zh-CN';
 import {registerWarnHandler} from '@ember/debug';
+
+Ember.STRINGS = internation;
 
 const App = Application.extend({
     Resolver,

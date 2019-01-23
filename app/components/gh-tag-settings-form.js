@@ -3,7 +3,7 @@ import Component from '@ember/component';
 import Ember from 'ember';
 import boundOneWay from 'ghost-admin/utils/bound-one-way';
 import {computed} from '@ember/object';
-import {htmlSafe} from '@ember/string';
+import {htmlSafe, loc} from '@ember/string';
 import {reads} from '@ember/object/computed';
 import {inject as service} from '@ember/service';
 
@@ -32,9 +32,9 @@ export default Component.extend({
 
     title: computed('tag.isNew', function () {
         if (this.get('tag.isNew')) {
-            return 'New Tag';
+            return loc('New Tag');
         } else {
-            return 'Tag Settings';
+            return loc('Tag Settings');
         }
     }),
 

@@ -1,11 +1,11 @@
 {{#if _isSaving}}
-    Saving...
+    {{loc "Saving"}}...
 {{else if isPublished}}
-    Published
+    {{loc "Published"}}
 {{else if isScheduled}}
-    Scheduled
+    {{loc "Scheduled"}}
 {{else if isNew}}
-    New
+    {{loc "New"}}
 {{else}}
-    Draft
+    {{loc "Draft"}}
 {{/if}}
