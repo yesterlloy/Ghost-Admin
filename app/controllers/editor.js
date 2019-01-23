@@ -67,7 +67,7 @@ const messageMap = {
             published: {
                 published: loc('Updated') + '.',
                 draft: loc('Saved') + '.',
-                scheduled: loc(Scheduled) + '.'
+                scheduled: loc('Scheduled') + '.'
             },
             draft: {
                 published: loc('Published') + '!',
