@@ -2,7 +2,7 @@ import Evented from '@ember/object/evented';
 import RSVP from 'rsvp';
 import Service, {inject as service} from '@ember/service';
 import {computed} from '@ember/object';
-import { loc } from '@ember/string';
+import {loc} from '@ember/string';
 
 export default Service.extend(Evented, {
 
@@ -41,8 +41,8 @@ export default Service.extend(Evented, {
 
     init() {
         this._super(...arguments);
-        let adminUrl = `${window.location.origin}${this.get('ghostPaths.url').admin()}`;
-        let adminDisplayUrl = adminUrl.replace(`${window.location.protocol}//`, '');
+        // let adminUrl = `${window.location.origin}${this.get('ghostPaths.url').admin()}`;
+        // let adminDisplayUrl = adminUrl.replace(`${window.location.protocol}//`, '');
 
         this.viewed = [];
         this.throbbers = [{
@@ -66,7 +66,6 @@ export default Service.extend(Evented, {
             title: loc('upload-a-theme_title'),
             message: loc('upload-a-theme_message')
         }];
-
 
         /*
         this.throbbers = [{

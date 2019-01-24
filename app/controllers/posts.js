@@ -2,8 +2,8 @@ import Controller from '@ember/controller';
 import {alias} from '@ember/object/computed';
 import {computed} from '@ember/object';
 import {get} from '@ember/object';
+import {loc} from '@ember/string';
 import {inject as service} from '@ember/service';
-import { loc } from '@ember/string';
 
 const TYPES = [{
     name: loc('All posts'),
